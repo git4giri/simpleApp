@@ -1,0 +1,56 @@
+<?xml version="1.0" ?> 
+<project name="AntExample1" default="ear" basedir=".">
+	
+  <description>
+        simple example build file
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="./UCDSimpleApp/src"/>
+  <property name="build" location="./build"/>
+  <property name="dist"  location="./dist"/>
+  <property name="was_home" value="C:/Program Files (x86)/IBM/SDP/runtimes/base_v7" />
+  
+	<path id="compile.classpath">
+		<fileset dir="./UCDSimpleApp/WebContent/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${was_home}/lib">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="init">
+		<mkdir dir="build/classes"/>
+		<mkdir dir="dist" />
+	</target>
+	
+	<target name="compile" depends="init" >
+		<javac destdir="build/classes" debug="true" srcdir="./UCDSimpleApp/src">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<war destfile="dist/UCDSimpleApp.war" webxml="./UCDSimpleApp/WebContent/WEB-INF/web.xml">
+			<fileset dir="./UCDSimpleApp/WebContent">
+				<include name="*.html"/>
+				<include name="**/*.xml"/>
+				<exclude name="**/*.jar"/>
+			</fileset>
+			<lib dir="./UCDSimpleApp/WebContent/WEB-INF/lib"/>
+			<classes dir="build/classes"/>
+		</war>
+	</target>
+	<target name="ear" depends="war">
+		<ear destfile="dist/UCDSimpleAppEAR.ear" appxml="./UCDSimpleAppEAR/META-INF/application.xml">
+	      <fileset dir="dist" includes="*.jar,*.war"/>
+	    </ear>
+	</target>
+	
+	
+	<target name="clean">
+		<delete dir="dist" />
+		<delete dir="build" />
+	</target>
+	
+</project>
