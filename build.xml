@@ -8,7 +8,7 @@
   <property name="src" location="./UCDSimpleApp/src"/>
   <property name="build" location="./build"/>
   <property name="dist"  location="./dist"/>
-  <property name="was_home" value="C:/Program Files (x86)/IBM/SDP/runtimes/base_v7" />
+  <property name="was_home" value="/opt/IBM/WebSphere/AppServer" />
   
 	<path id="compile.classpath">
 		<fileset dir="./UCDSimpleApp/WebContent/WEB-INF/lib">
