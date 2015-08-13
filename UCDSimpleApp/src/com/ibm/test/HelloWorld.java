@@ -19,7 +19,7 @@ public class HelloWorld extends HttpServlet implements Servlet{
 		PrintWriter out = null;
 		try {
 			out = resp.getWriter();
-			out.write("Hi There !");
+			out.write("<h1>Hi There !</h1>");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
