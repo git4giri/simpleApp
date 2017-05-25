@@ -11,15 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloWorld extends HttpServlet implements Servlet{
 	private static final long serialVersionUID = -3537062746450602871L;
 
-	public void doPost(HttpServletRequest req, HttpServletResponse resp){
+	public void doGet(HttpServletRequest req, HttpServletResponse resp){
 		doPost(req, resp);
 	}
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp){
+	public void doPost(HttpServletRequest req, HttpServletResponse resp){
 		PrintWriter out = null;
 		try {
 			out = resp.getWriter();
 			out.write("<h1>Hi There !...</h1>");
+			if(request.getParameter("param") != null)
+				out.write("<h1>You typed: "+request.getParameter("param")+"</h1>");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
