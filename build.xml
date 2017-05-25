@@ -8,7 +8,7 @@
   <property name="src" location="./UCDSimpleApp/src"/>
   <property name="build" location="./build"/>
   <property name="dist"  location="./dist"/>
-  <property name="was_home" value="${was7.runtime}">
+  <property name="was_home" value="${was7.runtime}" />
   
 	<path id="compile.classpath">
 		<fileset dir="./UCDSimpleApp/WebContent/WEB-INF/lib">
