@@ -20,8 +20,8 @@ public class HelloWorld extends HttpServlet implements Servlet{
 		try {
 			out = resp.getWriter();
 			out.write("<h1>Hi There !...</h1>");
-			if(request.getParameter("param") != null)
-				out.write("<h1>You typed: "+request.getParameter("param")+"</h1>");
+			if(req.getParameter("param") != null)
+				out.write("<h1>You typed: "+req.getParameter("param")+"</h1>");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
